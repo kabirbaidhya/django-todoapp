@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TodoApp</title>
+    <title>{{app_title}}</title>
 
     {% load static %}
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,11 +29,11 @@
                     <li role="presentation"><a href="#">Contact</a></li>
                 </ul>
             </nav>
-            <h3 class="text-muted">TodoApp</h3>
+            <h3 class="text-muted">{{app_title}}</h3>
         </div>
 
         <div class="jumbotron">
-            <h1>TodoApp</h1>
+            <h1>{{app_title}}</h1>
             <p class="lead">Just a demo todo app we're trying to create.</p>
             <p>
                 <a class="btn btn-lg btn-success" href="#" role="button">Add TODO</a>
