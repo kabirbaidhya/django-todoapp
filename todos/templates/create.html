@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block content%}
+<h1>Add Todo</h1>
+<div class="todo-form">
+    <form>
+        <div class="form-group">
+            <label for="input-todo-title">Title</label>
+            <input type="text" class="form-control" id="input-todo-title" placeholder="What do you want to do?">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" placeholder="Description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+</div>
+{% endblock %}
