@@ -60,17 +60,22 @@ body {
 }
 
 .todolist .completed-check {
-    float: left;
-    padding: 0 5px;
+  float: left;
+  padding: 0 5px;
 }
 
 .todolist .todo-title {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .todolist li h4 {
-    line-height: 22px;
-    font-size: 18px;
+  line-height: 22px;
+  font-size: 18px;
+  margin-right: 120px;
+  margin-bottom: 0;
+}
+.todolist .todo-title .todo-actions {
+  float: right;
 }
 
 /* Responsive: Portrait tablets and up */
