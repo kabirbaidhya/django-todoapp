@@ -59,6 +59,20 @@ body {
   margin-top: 28px;
 }
 
+.todolist .completed-check {
+    float: left;
+    padding: 0 5px;
+}
+
+.todolist .todo-title {
+    margin-left: 30px;
+}
+
+.todolist li h4 {
+    line-height: 22px;
+    font-size: 18px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
