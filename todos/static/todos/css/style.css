@@ -76,10 +76,15 @@ body {
 }
 .todolist .todo-title .todo-actions {
   float: right;
+  display: none;
 }
 
-.todo-actions a {
+.todolist .todo-actions a {
   margin-left: 10px;
+}
+
+.todolist li:hover .todo-actions {
+  display: block;
 }
 
 /* Responsive: Portrait tablets and up */
