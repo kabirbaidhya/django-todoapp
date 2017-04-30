@@ -2,7 +2,7 @@
     <div class="todolist list-group">
         <ul class="list-unstyled">
             {% for item in items %}
-                <li class="list-group-item">
+                <li class="list-group-item {% if item.completed %}completed{% endif %}">
                     <div class="completed-check">
                         <input type="checkbox" {% if item.completed %}checked{% endif %} />
                     </div>
