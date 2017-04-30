@@ -3,11 +3,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    context = {
-        'app_title': 'TodoApp'
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def create(request):
-    return HttpResponse('This should display the create form.')
+    return render(request, 'create.html')
