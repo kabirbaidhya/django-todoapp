@@ -4,7 +4,7 @@
             {% for item in items %}
                 <li class="list-group-item">
                     <div class="completed-check">
-                        <input type="checkbox">
+                        <input type="checkbox" {% if item.completed %}checked{% endif %} />
                     </div>
                     <div class="todo-title">
                         <div class="todo-actions">
