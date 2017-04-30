@@ -2,7 +2,8 @@
 {% block content%}
 <h3>Add Todo</h3>
 <div class="todo-form">
-    <form>
+    <form method="post" action="{% url 'save' %}">
+        {% csrf_token %}
         <div class="form-group">
             <label for="input-todo-title">Title</label>
             <input type="text" class="form-control" id="input-todo-title" placeholder="What do you want to do?">
