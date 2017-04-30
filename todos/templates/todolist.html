@@ -1,52 +1,20 @@
 <div class="row marketing">
     <div class="todolist list-group">
-        <li class="list-group-item">
-            <div class="completed-check">
-                <input type="checkbox">
-            </div>
-            <div class="todo-title">
-                <div class="todo-actions">
-                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                    <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
-                </div>
-                <h4 class="list-group-item-heading">List Item 1</h4>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="completed-check">
-                <input type="checkbox">
-            </div>
-            <div class="todo-title">
-                <div class="todo-actions">
-                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                    <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
-                </div>
-                <h4 class="list-group-item-heading">List Item 2</h4>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="completed-check">
-                <input type="checkbox">
-            </div>
-            <div class="todo-title">
-                <div class="todo-actions">
-                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                    <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
-                </div>
-                <h4 class="list-group-item-heading">List Item 3</h4>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="completed-check">
-                <input type="checkbox">
-            </div>
-            <div class="todo-title">
-                <div class="todo-actions">
-                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                    <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
-                </div>
-                <h4 class="list-group-item-heading">List Item 4</h4>
-            </div>
-        </li>
+        <ul class="list-unstyled">
+            {% for item in items %}
+                <li class="list-group-item">
+                    <div class="completed-check">
+                        <input type="checkbox">
+                    </div>
+                    <div class="todo-title">
+                        <div class="todo-actions">
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                            <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                        </div>
+                        <h4 class="list-group-item-heading">{{item.title}}</h4>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
