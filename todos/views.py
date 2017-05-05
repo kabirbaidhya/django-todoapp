@@ -1,32 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from todos.models import Todo
 
 
 def index(request):
-    items = [
-        {
-            'title': 'Item 1',
-            'completed': False,
-            'description': 'No eam nisl assum impetus, dicta .',
-            'created_at': 'Apr 30, 2017'
-        },
-        {
-            'title': 'Item 2',
-            'completed': True,
-            'description': 'No eam nisl assum impetus, dicta .',
-            'created_at': 'Apr 30, 2017'
-        },
-        {
-            'title': 'Item 3',
-            'completed': False,
-            'description': 'No eam nisl assum impetus, dicta .',
-            'created_at': 'Apr 30, 2017'
-        }
-    ]
+    items = Todo.objects.all()
 
-    return render(request, 'index.html', {
-        'items': items
-    })
+    return render(request, 'index.html', {'items': items})
 
 
 def create(request):
