@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.utils import timezone
+
 from todos.models import Todo
 
 
@@ -14,4 +16,16 @@ def create(request):
 
 
 def save(request):
-    return HttpResponse('Save TODO item here.')
+    # Get the form data from the request.
+    title = request.POST.get('title')
+    description = request.POST.get('description')
+
+    # Create a new todo item with the data.
+    Todo.objects.create(
+        title=title,
+        description=description,
+        created_at=timezone.now()
+    )
+
+    # Redirect back to index page
+    return redirect('index')
