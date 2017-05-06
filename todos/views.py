@@ -34,8 +34,13 @@ def save(request):
 
 
 def edit(request, id):
-    print('Received Id = ' + str(id))
+    print('Received Id: ' + str(id))
+
+    # Fetch todo item by id
+    todo = Todo.objects.get(pk = id)
+    print('Got todo item: ', todo.__dict__)
 
     return render(request, 'create.html', {
-        'form_type': 'edit'
+        'form_type': 'edit',
+        'todo': todo
     })
