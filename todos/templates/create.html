@@ -9,6 +9,9 @@
 </h3>
 <div class="todo-form">
     <form method="post" action="{% url 'save' %}">
+        <input type="hidden" name="id" value="{{todo.id}}" />
+        <input type="hidden" name="form_type" value="{{form_type}}" />
+
         {% csrf_token %}
         <div class="form-group">
             <label for="input-todo-title">Title</label>
