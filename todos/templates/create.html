@@ -12,11 +12,17 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="input-todo-title">Title</label>
-            <input type="text" name="title" class="form-control" id="input-todo-title" placeholder="What do you want to do?">
+            <input type="text"
+                name="title" class="form-control"
+                id="input-todo-title"
+                placeholder="What do you want to do?"
+                value="{{todo.title}}"
+                />
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+            <textarea name="description" class="form-control" id="description"
+                placeholder="Description">{% if todo.description is not None %}{{todo.description}}{% endif %}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
