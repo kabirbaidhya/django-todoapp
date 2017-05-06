@@ -1,6 +1,12 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content%}
-<h3>Add Todo</h3>
+<h3>
+    {% if form_type == 'create' %}
+        Add Todo
+    {% elif form_type == 'edit' %}
+        Edit Todo
+    {% endif %}
+</h3>
 <div class="todo-form">
     <form method="post" action="{% url 'save' %}">
         {% csrf_token %}

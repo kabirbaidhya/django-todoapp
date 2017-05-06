@@ -12,7 +12,9 @@ def index(request):
 
 
 def create(request):
-    return render(request, 'create.html')
+    return render(request, 'create.html', {
+        'form_type': 'create'
+    })
 
 
 def save(request):
@@ -34,4 +36,6 @@ def save(request):
 def edit(request, id):
     print('Received Id = ' + str(id))
 
-    return render(request, 'create.html')
+    return render(request, 'create.html', {
+        'form_type': 'edit'
+    })
