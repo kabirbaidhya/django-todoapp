@@ -2,10 +2,22 @@ window.addEventListener('load', handleLoad);
 
 function handleLoad() {
     var form = document.querySelector('.todo-form form');
+    var messages = document.querySelector('.messages');
 
     if (form) {
         form.addEventListener('submit', handleFormSubmit);
     }
+
+    if (messages) {
+        console.log('Message will be hidden after 5 seconds.');
+        setTimeout(hideMessages, 5000);
+    }
+}
+
+function hideMessages() {
+    var messages = document.querySelector('.messages');
+
+    messages.style.display = 'none';
 }
 
 function handleFormSubmit(e) {
