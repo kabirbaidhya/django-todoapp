@@ -54,6 +54,8 @@ def save(request):
         todo.save()
         print('Todo updated: ', todo.__dict__)
 
+    # Add save success message
+    messages.info(request, 'Todo Item Saved.')
     # Redirect back to index page
     return redirect('index')
 
