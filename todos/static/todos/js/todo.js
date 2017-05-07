@@ -16,8 +16,35 @@ function handleLoad() {
 
 function hideMessages() {
     var messages = document.querySelector('.messages');
-
     messages.style.display = 'none';
+}
+
+function isAlreadyHidden(element) {
+    return (
+        element.style.display === 'none'
+    );
+}
+
+function disappear(selector, duration = 1000) {
+    var element = document.querySelector(selector);
+
+    if (isAlreadyHidden(element)) {
+        return;
+    }
+
+    var parts = 10;
+    var changeInterval = duration / parts;
+    var opacity = 1.0;
+
+    var interval = setInterval(function () {
+        opacity = opacity - (1 / parts);
+        element.style.opacity = opacity;
+
+        if (opacity === 0) {
+            element.style.display = 'none';
+            clearInterval(interval);
+        }
+    }, changeInterval);
 }
 
 function handleFormSubmit(e) {
