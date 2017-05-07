@@ -7,6 +7,7 @@
         Edit Todo
     {% endif %}
 </h3>
+{% include 'messages.html' %}
 <div class="todo-form">
     <form method="post" action="{% url 'save' %}">
         <input type="hidden" name="id" value="{{todo.id}}" />
