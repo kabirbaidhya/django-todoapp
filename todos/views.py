@@ -12,7 +12,7 @@ def index(request):
 
 
 def create(request):
-    return render(request, 'create.html', {
+    return render(request, 'form.html', {
         'form_type': 'create'
     })
 
@@ -59,7 +59,7 @@ def edit(request, id):
     todo = Todo.objects.get(pk = id)
     print('Got todo item: ', todo.__dict__)
 
-    return render(request, 'create.html', {
+    return render(request, 'form.html', {
         'form_type': 'edit',
         'todo': todo
     })
