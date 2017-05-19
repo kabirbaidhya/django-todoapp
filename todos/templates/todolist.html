@@ -2,18 +2,21 @@
     <div class="todolist list-group">
         <ul class="list-unstyled">
             {% for item in items %}
-                <li class="list-group-item {% if item.completed %}completed{% endif %}">
-                    <div class="completed-check">
-                        <input type="checkbox" {% if item.completed %}checked{% endif %} />
+            <li class="list-group-item {% if item.completed %}completed{% endif %}">
+                <div class="completed-check">
+                    <input 
+                        type="checkbox" {% if item.completed %}checked{% endif %} 
+                        data-id="{{item.id}}" class="todo-complete-check" 
+                    />
+                </div>
+                <div class="todo-title">
+                    <div class="todo-actions">
+                        <a href="{% url 'edit' item.id %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                        <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
                     </div>
-                    <div class="todo-title">
-                        <div class="todo-actions">
-                            <a href="{% url 'edit' item.id %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                            <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
-                        </div>
-                        <h4 class="list-group-item-heading">{{item.title}}</h4>
-                    </div>
-                </li>
+                    <h4 class="list-group-item-heading">{{item.title}}</h4>
+                </div>
+            </li>
             {% endfor %}
         </ul>
     </div>

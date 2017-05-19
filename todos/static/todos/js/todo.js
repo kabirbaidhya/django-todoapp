@@ -58,3 +58,11 @@ function handleFormSubmit(e) {
         e.preventDefault();
     }
 }
+
+function handleTodoCheckChange(e) {
+    var checked = e.target.checked;
+    var todoId = e.target.getAttribute('data-id');
+
+    console.log('todo: ', todoId, checked);
+    // TODO: Implement logic here.
+}
