@@ -68,8 +68,9 @@ function handleFormSubmit(e) {
 }
 
 function handleTodoCheckChange(e) {
-    var checked = e.target.checked;
-    var todoId = e.target.getAttribute('data-id');
+    var checkbox = e.target;
+    var checked = checkbox.checked;
+    var todoId = checkbox.getAttribute('data-id');
     var body = {'completed': checked};
 
     console.log('todo: ', todoId, checked);
@@ -77,9 +78,23 @@ function handleTodoCheckChange(e) {
     // Do a PATCH request with the completed data.
     console.log('Sending a PATCH request');
 
+    checkbox.disabled = true;
+
     axios.patch('/api/todos/' + todoId, body)
         .then(function(response) {
             console.log('Response received', response.statusText, response.data);
+            checkbox.disabled = false;
+
+            var listItem = checkbox.closest('li.list-group-item');
+
+            if (listItem && checked) {
+                listItem.classList.add('completed')
+            } else if (listItem) {
+                listItem.classList.remove('completed')
+            }
+        })
+        .catch(function() {
+            checkbox.disabled = false;
         });
     e.preventDefault();
 }
