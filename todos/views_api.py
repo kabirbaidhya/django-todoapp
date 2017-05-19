@@ -15,4 +15,11 @@ def update(request, id):
     print('Received update API request for todo id: ', id)
     print('Completed: ', data['completed'])
 
+    # Update the model
+    todo = Todo.objects.get(pk=id)
+    todo.completed = data['completed']
+    todo.save()
+
+    print('Todo item updated')
+
     return JsonResponse({})
