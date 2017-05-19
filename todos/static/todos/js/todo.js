@@ -3,6 +3,14 @@ window.addEventListener('load', handleLoad);
 function handleLoad() {
     var form = document.querySelector('.todo-form form');
     var messages = document.querySelector('.messages');
+    var checkboxes = document.querySelectorAll('.todo-complete-check');
+
+    if (checkboxes) {
+        // Register check event handler for each checkbox
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].addEventListener('change', handleTodoCheckChange);
+        }
+    }
 
     if (form) {
         form.addEventListener('submit', handleFormSubmit);
@@ -62,7 +70,15 @@ function handleFormSubmit(e) {
 function handleTodoCheckChange(e) {
     var checked = e.target.checked;
     var todoId = e.target.getAttribute('data-id');
+    var body = {'completed': checked};
 
     console.log('todo: ', todoId, checked);
-    // TODO: Implement logic here.
+
+    // Do a PATCH request with the completed data.
+    console.log('Sending a PATCH request');
+
+    axios.patch('/api/todos/' + todoId, body)
+        .then(function(response) {
+            console.log('Response received', response.statusText, response.data);
+        });
 }
