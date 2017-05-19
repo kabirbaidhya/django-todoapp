@@ -7,7 +7,7 @@ from todos.models import Todo
 
 
 def index(request):
-    items = Todo.objects.all()
+    items = Todo.objects.all().order_by('-created_at')
 
     return render(request, 'index.html', {'items': items})
 

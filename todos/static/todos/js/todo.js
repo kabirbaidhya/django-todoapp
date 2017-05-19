@@ -81,4 +81,5 @@ function handleTodoCheckChange(e) {
         .then(function(response) {
             console.log('Response received', response.statusText, response.data);
         });
+    e.preventDefault();
 }
