@@ -12,4 +12,5 @@ urlpatterns = [
 
     # Auth Routes
     url(r'^login$', auth_views.login, name='login')
+    url(r'^login/authenticate$', auth_views.authenticate, name='authenticate')
 ]
