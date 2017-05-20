@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 def login(request):
@@ -42,4 +43,24 @@ def signup(request):
 
 
 def signup_submit(request):
-    return redirect('index')
+    # Get the form data from the request.
+    email = request.POST.get('email')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+
+    user = User.objects.create_user(
+        username=username,
+        email=email,
+        password=password,
+        first_name=first_name,
+        last_name=last_name
+    )
+
+    if user:
+        messages.info(request, 'User has been created, you can login now.')
+        return redirect('login')
+
+    messages.error(request, 'Error creating a new user.')
+    return redirect(request.META.get('HTTP_REFERER'))
