@@ -1,12 +1,13 @@
+{% if user.is_authenticated %}
 <div class="row marketing">
     <div class="todolist list-group">
         <ul class="list-unstyled">
             {% for item in items %}
             <li class="list-group-item {% if item.completed %}completed{% endif %}">
                 <div class="completed-check">
-                    <input 
-                        type="checkbox" {% if item.completed %}checked{% endif %} 
-                        data-id="{{item.id}}" class="todo-complete-check" 
+                    <input
+                        type="checkbox" {% if item.completed %}checked{% endif %}
+                        data-id="{{item.id}}" class="todo-complete-check"
                     />
                 </div>
                 <div class="todo-title">
@@ -21,3 +22,8 @@
         </ul>
     </div>
 </div>
+{% else %}
+    <div class="jumbotron">
+        <p>You need to <a href="{% url 'login' %}" >login</a> first to view the todolist.</p>
+    </div>
+{% endif %}
