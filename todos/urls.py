@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from todos import views, views_api
+from todos import views, views_api, auth_views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -8,5 +8,8 @@ urlpatterns = [
     url(r'^edit/todos/(\d+)$', views.edit, name='edit'),
 
     # API Route for Ajax
-    url(r'^api/todos/(\d+)$', views_api.update, name='api_update_todo')
+    url(r'^api/todos/(\d+)$', views_api.update, name='api_update_todo'),
+
+    # Auth Routes
+    url(r'^login$', auth_views.login, name='login')
 ]
