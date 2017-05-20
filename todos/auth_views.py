@@ -1,6 +1,6 @@
+from django.contrib import auth
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
 
 def login(request):
     print('The login page')
@@ -14,7 +14,7 @@ def authenticate(request):
     password = request.POST.get('password')
 
     print('Authenticating the user')
-    user = authenticate(request, username=username, password=password)
+    user = auth.authenticate(request, username=username, password=password)
 
     # If authentication failed redirect back to the form
     # with messages.
@@ -24,9 +24,9 @@ def authenticate(request):
         return redirect(request.META.get('HTTP_REFERER'))
 
     # If authentication was successful
-    login(request, user)
+    auth.login(request, user)
     print('Login successful')
 
     # Add save success message
     messages.info(request, 'You are now logged in as {}.'.format(username))
-    redirect('index')
+    return redirect('index')

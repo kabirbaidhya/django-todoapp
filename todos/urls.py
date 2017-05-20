@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^api/todos/(\d+)$', views_api.update, name='api_update_todo'),
 
     # Auth Routes
-    url(r'^authenticate$', auth_views.authenticate, name='authenticate'),
     url(r'^login$', auth_views.login, name='login'),
+    url(r'^authenticate$', auth_views.authenticate, name='authenticate'),
 ]
