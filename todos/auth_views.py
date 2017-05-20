@@ -36,3 +36,10 @@ def authenticate(request):
     # Add save success message
     messages.info(request, 'You are now logged in as {}.'.format(username))
     return redirect('index')
+
+def signup(request):
+    return render(request, 'signup.html')
+
+
+def signup_submit(request):
+    return redirect('index')
