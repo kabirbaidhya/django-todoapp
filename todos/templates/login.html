@@ -3,7 +3,7 @@
 <h3>Login</h3>
 {% include 'messages.html' %}
 <div class="todo-form">
-    <form method="post" action="{% url 'login/authenticate' %}">
+    <form method="post" action="{% url 'authenticate' %}">
         {% csrf_token %}
         <div class="form-group">
             <label for="username">Username</label>

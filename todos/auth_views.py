@@ -14,7 +14,7 @@ def authenticate(request):
     password = request.POST.get('password')
 
     print('Authenticating the user')
-    user = authenticate(username=username, password=password)
+    user = authenticate(request, username=username, password=password)
 
     # If authentication failed redirect back to the form
     # with messages.
