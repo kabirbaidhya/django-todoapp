@@ -8,7 +8,11 @@ from todos.models import Todo
 
 
 def index(request):
-    items = Todo.objects.all().order_by('-created_at')
+    items = []
+
+    # Get only the user-specific todo items.
+    if request.user.is_authenticated:
+        items = Todo.objects.filter(user=request.user).order_by('-created_at')
 
     return render(request, 'index.html', {'items': items})
 
