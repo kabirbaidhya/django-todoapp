@@ -27,6 +27,9 @@
                     <li role="presentation" class="active">
                         <a href="{% url 'index' %}">Home</a>
                     </li>
+                    <li role="presentation">
+                        <a href="{% url 'create' %}">Add TODO</a>
+                    </li>
                     {% if user.is_authenticated %}
                         <li role="presentation">
                             <b>{{user.first_name}} {{user.last_name}}</b>
