@@ -7,6 +7,12 @@ def login(request):
 
     return render(request, 'login.html')
 
+def logout(request):
+    print('Logging Out')
+    auth.logout(request)
+    messages.info(request, 'You have been logged out.')
+    return redirect('index')
+
 def authenticate(request):
     print('The authenticate request')
     # Get the form data from the request.

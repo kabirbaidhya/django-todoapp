@@ -29,7 +29,7 @@
                     {% if user.is_authenticated %}
                         <li role="presentation">
                             <b>{{user.first_name}} {{user.last_name}}</b>
-                            <a href="">Logout</a>
+                            <a href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li role="presentation">
