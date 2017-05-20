@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 def login(request):
@@ -8,11 +9,14 @@ def login(request):
 
     return render(request, 'login.html')
 
+
+@login_required
 def logout(request):
     print('Logging Out')
     auth.logout(request)
     messages.info(request, 'You have been logged out.')
     return redirect('index')
+
 
 def authenticate(request):
     print('The authenticate request')

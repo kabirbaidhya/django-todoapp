@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.utils import timezone
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from todos.models import Todo
 
@@ -12,12 +13,14 @@ def index(request):
     return render(request, 'index.html', {'items': items})
 
 
+@login_required
 def create(request):
     return render(request, 'form.html', {
         'form_type': 'create'
     })
 
 
+@login_required
 def save(request):
     # Get the form data from the request.
     title = request.POST.get('title')
@@ -60,6 +63,7 @@ def save(request):
     return redirect('index')
 
 
+@login_required
 def edit(request, id):
     print('Received Id: ' + str(id))
 
