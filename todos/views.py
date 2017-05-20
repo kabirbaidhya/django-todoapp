@@ -43,7 +43,8 @@ def save(request):
         todo = Todo.objects.create(
             title=title,
             description=description,
-            created_at=timezone.now()
+            created_at=timezone.now(),
+            user=request.user
         )
         print('New Todo created: ', todo.__dict__)
     elif form_type == 'edit' and id.isdigit():
