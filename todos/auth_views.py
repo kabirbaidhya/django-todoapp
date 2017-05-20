@@ -16,6 +16,13 @@ def authenticate(request):
     print('Authenticating the user')
     user = authenticate(username=username, password=password)
 
+    # If authentication failed redirect back to the form
+    # with messages.
+    if not user:
+        print('Login error')
+        messages.error(request, 'Login failed. Please try again.')
+        return redirect(request.META.get('HTTP_REFERER'))
+
     # If authentication was successful
     login(request, user)
     print('Login successful')
