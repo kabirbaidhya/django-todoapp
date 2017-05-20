@@ -25,7 +25,18 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="{% url 'login' %}">Login</a></li>
+
+                    {% if user.is_authenticated %}
+                        <li role="presentation">
+                            <b>{{user.first_name}} {{user.last_name}}</b>
+                            <a href="">Logout</a>
+                        </li>
+                    {% else %}
+                        <li role="presentation">
+                            <a href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </nav>
             <h3 class="text-muted">TodoApp</h3>
