@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^create$', views.create, name='create'),
     url(r'^save$', views.save, name='save'),
     url(r'^edit/todos/(\d+)$', views.edit, name='edit'),
+    url(r'^delete/todos/(\d+)$', views.delete, name='delete'),
 
     # API Route for Ajax
     url(r'^api/todos/(\d+)$', views_api.update, name='api_update_todo'),

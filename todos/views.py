@@ -76,7 +76,27 @@ def edit(request, id):
     todo = Todo.objects.get(pk=id)
     print('Got todo item: ', todo.__dict__)
 
+    # Check if the logged in user is the creator user of todo.
+    if request.user.id != todo.user.id:
+        messages.error(request, 'You are not authorized to edit this todo item.')
+        return redirect('index')
+
     return render(request, 'form.html', {
         'form_type': 'edit',
         'todo': todo
     })
+
+@login_required
+def delete(request, id):
+    # Fetch todo item by id
+    todo = Todo.objects.get(pk=id)
+    print('Got todo item: ', todo.__dict__)
+
+    # Check if the logged in user is the creator user of todo.
+    if request.user.id == todo.user.id:
+        messages.info(request, 'Todo Item has been deleted.')
+        todo.delete()
+        return redirect('index')
+
+    messages.error(request, 'You are not authorized to delete this todo item.')
+    return redirect('index')
