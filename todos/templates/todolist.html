@@ -2,23 +2,29 @@
 <div class="row marketing">
     <div class="todolist list-group">
         <ul class="list-unstyled">
-            {% for item in items %}
-            <li class="list-group-item {% if item.completed %}completed{% endif %}">
-                <div class="completed-check">
-                    <input
-                        type="checkbox" {% if item.completed %}checked{% endif %}
-                        data-id="{{item.id}}" class="todo-complete-check"
-                    />
+            {% if not items %}
+                <div class="alert alert-warning">
+                    <p>No items in the list.</p>
                 </div>
-                <div class="todo-title">
-                    <div class="todo-actions">
-                        <a href="{% url 'edit' item.id %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                        <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+            {% else %}
+                {% for item in items %}
+                <li class="list-group-item {% if item.completed %}completed{% endif %}">
+                    <div class="completed-check">
+                        <input
+                            type="checkbox" {% if item.completed %}checked{% endif %}
+                            data-id="{{item.id}}" class="todo-complete-check"
+                        />
                     </div>
-                    <h4 class="list-group-item-heading">{{item.title}}</h4>
-                </div>
-            </li>
-            {% endfor %}
+                    <div class="todo-title">
+                        <div class="todo-actions">
+                            <a href="{% url 'edit' item.id %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                            <a href="#"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                        </div>
+                        <h4 class="list-group-item-heading">{{item.title}}</h4>
+                    </div>
+                </li>
+                {% endfor %}
+            {% endif %}
         </ul>
     </div>
 </div>
