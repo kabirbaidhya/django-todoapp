@@ -1,4 +1,10 @@
 {% if user.is_authenticated %}
+<div>
+    <strong>Filter By:</strong>
+    <a href="{% url 'index' %}?filter=all">All</a> |
+    <a href="{% url 'index' %}?filter=completed">Completed</a> |
+    <a href="{% url 'index' %}?filter=pending">Pending</a|
+</div>
 <div class="row marketing">
     <div class="todolist list-group">
         <ul class="list-unstyled">
@@ -18,20 +24,19 @@
                     <div class="todo-title">
                         <div class="todo-actions">
                             <a href="{% url 'edit' item.id %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                            <a href="{% url 'delete' item.id %}">
+    <a href="{% url 'delete' item.id %}">
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </a>
-                        </div>
-                        <h4 class="list-group-item-heading">{{item.title}}</h4>
-                    </div>
-                </li>
-                {% endfor %}
-            {% endif %}
-        </ul>
-    </div>
+</div>
+<h4 class="list-group-item-heading">{{item.title}}</h4>
+</div>
+</li>
+{% endfor %} {% endif %}
+</ul>
+</div>
 </div>
 {% else %}
-    <div class="jumbotron">
-        <p>You need to <a href="{% url 'login' %}" >login</a> first to view the todolist.</p>
-    </div>
+<div class="jumbotron">
+    <p>You need to <a href="{% url 'login' %}">login</a> first to view the todolist.</p>
+</div>
 {% endif %}

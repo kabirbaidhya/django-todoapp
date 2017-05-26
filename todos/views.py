@@ -12,9 +12,32 @@ def index(request):
 
     # Get only the user-specific todo items.
     if request.user.is_authenticated:
-        items = Todo.objects.filter(user=request.user).order_by('-created_at')
+        filter = request.GET.get('filter')
+        print('Filter = ', filter)
+
+        items = filter_results(request.user, filter)
 
     return render(request, 'index.html', {'items': items})
+
+
+def filter_results(user, filter):
+    # If filter is completed
+    if filter == 'completed':
+        return Todo.objects.filter(
+            user=user,
+            completed=True
+        ).order_by('-created_at')
+
+    # Else If filter is pending
+    elif filter == 'pending':
+        return Todo.objects.filter(
+            user=user,
+            completed=False
+        ).order_by('-created_at')
+
+    # Otherwise
+    else:
+        return Todo.objects.filter(user=user).order_by('-created_at')
 
 
 @login_required
@@ -78,13 +101,15 @@ def edit(request, id):
 
     # Check if the logged in user is the creator user of todo.
     if request.user.id != todo.user.id:
-        messages.error(request, 'You are not authorized to edit this todo item.')
+        messages.error(
+            request, 'You are not authorized to edit this todo item.')
         return redirect('index')
 
     return render(request, 'form.html', {
         'form_type': 'edit',
         'todo': todo
     })
+
 
 @login_required
 def delete(request, id):
