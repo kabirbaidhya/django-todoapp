@@ -9,6 +9,7 @@ from todos.models import Todo
 
 def index(request):
     items = []
+    filter = None
 
     # Get only the user-specific todo items.
     if request.user.is_authenticated:
