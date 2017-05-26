@@ -95,6 +95,10 @@ body {
 .todolist li.completed input {
   opacity: 0.5;
 }
+.filter a.active {
+  font-weight: bold;
+  color: #000;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

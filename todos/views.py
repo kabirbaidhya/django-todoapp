@@ -17,7 +17,10 @@ def index(request):
 
         items = filter_results(request.user, filter)
 
-    return render(request, 'index.html', {'items': items})
+    return render(request, 'index.html', {
+        'items': items,
+        'filter': filter
+    })
 
 
 def filter_results(user, filter):
