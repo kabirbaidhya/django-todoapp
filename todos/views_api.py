@@ -30,3 +30,8 @@ def update(request, id):
 class TodoListView(generics.ListCreateAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+
+
+class TodoItemView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
