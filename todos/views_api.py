@@ -2,8 +2,10 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from rest_framework import generics
 
 from todos.models import Todo
+from todos.serializers import TodoSerializer
 
 
 @csrf_exempt
@@ -23,3 +25,8 @@ def update(request, id):
     print('Todo item updated')
 
     return JsonResponse({})
+
+
+class TodoListView(generics.ListCreateAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
