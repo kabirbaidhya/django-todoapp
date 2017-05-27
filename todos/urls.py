@@ -10,6 +10,7 @@ urlpatterns = [
 
     # API Route for Ajax
     url(r'^api/todos/(\d+)$', views_api.update, name='api_update_todo'),
+    url(r'^api/todos$', views_api.TodoListView.as_view(), name='api_todo_list'),
 
     # Auth Routes
     url(r'^login$', auth_views.login, name='login'),
