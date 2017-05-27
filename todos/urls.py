@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^delete/todos/(\d+)$', views.delete, name='delete'),
 
     # API Route for Ajax
-    url(r'^api/todos/(\d+)$', views_api.update, name='api_update_todo'),
+    url(r'^api/todos/(?P<pk>[0-9]+)$', views_api.TodoItemView.as_view(), name='api_todo_item'),
     url(r'^api/todos$', views_api.TodoListView.as_view(), name='api_todo_list'),
 
     # Auth Routes
