@@ -1,0 +1,11 @@
+appdirs==1.4.3
+click==6.7
+Django==1.11
+djangorestframework==3.6.3
+packaging==16.8
+pkg-resources==0.0.0
+psycopg2==2.7.1
+pyparsing==2.2.0
+python-dotenv==0.6.4
+pytz==2017.2
+six==1.10.0
