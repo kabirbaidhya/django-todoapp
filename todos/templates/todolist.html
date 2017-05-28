@@ -28,7 +28,7 @@
                     <div class="todo-title">
                         <div class="todo-actions">
                             <a href="{% url 'edit' item.id %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-    <a href="{% url 'delete' item.id %}">
+                            <a data-id="{{ item.id }}" class="delete-link">
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </a>
 </div>

@@ -4,11 +4,19 @@ function handleLoad() {
     var form = document.querySelector('.todo-form form');
     var messages = document.querySelector('.messages');
     var checkboxes = document.querySelectorAll('.todo-complete-check');
+    var deleteLinks = document.querySelectorAll('.delete-link');
 
     if (checkboxes) {
         // Register check event handler for each checkbox
         for (var i = 0; i < checkboxes.length; i++) {
             checkboxes[i].addEventListener('change', handleTodoCheckChange);
+        }
+    }
+
+    if (deleteLinks) {
+        // Register check event handler for each checkbox
+        for (var i = 0; i < deleteLinks.length; i++) {
+            deleteLinks[i].addEventListener('click', handleTodoRemoveClick);
         }
     }
 
@@ -20,6 +28,23 @@ function handleLoad() {
         console.log('Message will be hidden after 5 seconds.');
         setTimeout(hideMessages, 5000);
     }
+}
+
+function handleTodoRemoveClick(e) {
+    var dataId = e.target.getAttribute('data-id');
+    var url = '/api/delete/todos/' + dataId;
+
+    var listGroupItem = e.target.closest('.list-group-item');
+    
+    // Send a DELETE request
+    axios.delete(url)
+        .then(function(response) {
+            console.log('response received', response.data);
+            listGroupItem.remove();
+        })
+        .catch(function(err) {
+            console.log('Error occurred: ', err);
+        });
 }
 
 function hideMessages() {

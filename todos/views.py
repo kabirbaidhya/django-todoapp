@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 
 from todos.models import Todo
 
@@ -122,10 +123,16 @@ def edit(request, id):
 @require_http_methods(['DELETE'])
 def delete(request, id):
     # Fetch todo item by id
-    todo = Todo.objects.get(pk=id)
-    print('Got todo item: ', todo.__dict__)
+    try:
+        todo = Todo.objects.get(pk=id)
+        print('Got todo item: ', todo.__dict__)
+        todo.delete()
 
-    todo.delete()
-    return JsonResponse({
-        'message': 'Todo Item has been deleted.'
-    })
+        return JsonResponse({
+            'message': 'Todo Item has been deleted.'
+        })
+
+    except ObjectDoesNotExist:
+        return JsonResponse({
+            'message': 'An error occurred while deleting.'
+        })
