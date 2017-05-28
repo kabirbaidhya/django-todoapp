@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+from django.http import JsonResponse
 
 from todos.models import Todo
 
@@ -115,17 +118,14 @@ def edit(request, id):
     })
 
 
-@login_required
+@csrf_exempt
+@require_http_methods(['DELETE'])
 def delete(request, id):
     # Fetch todo item by id
     todo = Todo.objects.get(pk=id)
     print('Got todo item: ', todo.__dict__)
 
-    # Check if the logged in user is the creator user of todo.
-    if request.user.id == todo.user.id:
-        messages.info(request, 'Todo Item has been deleted.')
-        todo.delete()
-        return redirect('index')
-
-    messages.error(request, 'You are not authorized to delete this todo item.')
-    return redirect('index')
+    todo.delete()
+    return JsonResponse({
+        'message': 'Todo Item has been deleted.'
+    })
